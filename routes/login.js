@@ -56,4 +56,41 @@ router.post("/",val_login, async(req, res) => {
     }
 });
 
+//Check User is login or not
+router.get("/isLoggedIn", async (req, res) => {
+    //Check user have token or not
+    // console.log(req.cookies)
+    // console.log(req.body)
+    // console.log(req.query)
+    // console.log(req.headers.token)
+    const token = req.cookies || req.body.token || req.headers.authorization ||req.headers.token;
+    // console.log(token)
+  
+    if (token == undefined || token == null || token == "") {
+      return res.json(false);
+    }
+  
+    const have_valid_tokem = jwt.verify(token, process.env.JWT_SECRET, {
+      algorithm: "HS256",
+    });
+    console.log(have_valid_tokem)
+  
+    if (!have_valid_tokem) {
+      return res.json(false);
+    }
+  
+    const id_from_token = have_valid_tokem._id;
+    // console.log(id_from_token)
+  
+    //Check Same id have database
+    const user = await UsersSchema.findOne({ _id:id_from_token }).lean();
+    // console.log(user);
+  
+    if (user == undefined || user == null || user == "") {
+      res.json(false);
+    } else {
+      res.json({user:user});
+    }
+  }); //pending
+
 module.exports = router;
