@@ -90,7 +90,7 @@ router.delete("/:id", async (req, res) => {
         res.status(200).json({
             message:"Service deleted successfully",
             service
-        })
+        }) 
     }catch (error){
         res.status(500).json({message:"something went wrong", error:error.message})
     }

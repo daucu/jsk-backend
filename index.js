@@ -12,6 +12,7 @@ connectDB();
 //allowed origin
 const allowed_origins = [
     'http://localhost:3000',
+    'http://localhost:3002',
     'http://localhost:3047',
     "http://127.0.0.1:5500",
     "https://admin-jan-seva-kendra.vercel.app"
