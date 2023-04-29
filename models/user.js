@@ -12,6 +12,21 @@ const user= mongoose.Schema({
         type: String,
         required: true
     },
+    image:{
+        type:String
+    },
+    phone:{
+        type:Number,
+        
+    },
+    address:{
+        type:String,
+       
+    },
+    status:{
+        type:String,
+        required:true
+    },
 }, { timestamps: true });
 
 module.exports = mongoose.model('user', user);

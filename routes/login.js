@@ -73,7 +73,7 @@ router.get("/isLoggedIn", async (req, res) => {
     const have_valid_tokem = jwt.verify(token, process.env.JWT_SECRET, {
       algorithm: "HS256",
     });
-    console.log(have_valid_tokem)
+    // console.log(have_valid_tokem)
   
     if (!have_valid_tokem) {
       return res.json(false);

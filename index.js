@@ -2,8 +2,14 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3047;
 const cors= require('cors');
+const fileupload= require("express-fileupload")
 
 
+//alllow static files
+app.use(express.static(__dirname + "uploads"))
+
+// Enable file upload using express-fileupload
+app.use(fileupload({createParentPath: true }));
 
 //connect to database
 const connectDB = require('./config/connection');
@@ -36,6 +42,9 @@ app.use(express.json());
 app.use('/api/register', require('./routes/register'));
 app.use('/api/login', require('./routes/login'));
 app.use('/api/service', require('./routes/service'));
+app.use("/api/image-upload", require("./routes/file_upload"))
+app.use("/api/check-status", require("./routes/online_offline_status"))
+app.use("/api/logout", require("./routes/logout"));
 
 
 
