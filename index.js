@@ -18,7 +18,7 @@ connectDB();
 //allowed origin
 const allowed_origins = [
     'http://localhost:3000',
-    'http://localhost:3002',
+    'http://localhost:3001',
     'http://localhost:3047',
     "http://127.0.0.1:5500",
     "https://admin-jan-seva-kendra.vercel.app",
@@ -44,6 +44,7 @@ app.use('/api/login', require('./routes/login'));
 app.use('/api/service', require('./routes/service'));
 app.use("/api/image-upload", require("./routes/file_upload"))
 app.use("/api/check-status", require("./routes/online_offline_status"))
+app.use("/api/contact", require("./routes/contact"))
 app.use("/api/logout", require("./routes/logout"));
 
 
