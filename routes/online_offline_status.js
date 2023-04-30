@@ -11,7 +11,7 @@ router.put("/", async (req, res) => {
     try {
         //Check user have token or not
         // console.log(req.cookies)
-        console.log(req.body.headers.token)
+        // console.log(req.body.headers.token)
         // console.log(req.query)
         // console.log(req.headers)
         const token = req.cookies || req.body.token || req.headers.authorization || req.headers.token || req.body.headers.token;
@@ -24,7 +24,7 @@ router.put("/", async (req, res) => {
         const have_valid_tokem = jwt.verify(token, process.env.JWT_SECRET, {
             algorithm: "HS256",
         });
-        console.log(have_valid_tokem)
+        // console.log(have_valid_tokem)
 
         if (!have_valid_tokem) {
             return res.json({message:"something goes wrong"});
